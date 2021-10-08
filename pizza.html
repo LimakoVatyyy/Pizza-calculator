@@ -5,36 +5,50 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pizza calculator</title>
+
+    <style>
+        pizza {
+            color: red;
+        }
+    </style>
 </head>
 
 <body>
 
     <p>Podaj rozmiar pizzy w cm</p><br>
-    <input type="text" id="di"><br>
+    <input type="text" id="diameter"><br>
 
     <p>Podaj cenę pizzy w zł</p><br>
-    <input type="text" id="pr"><br>
+    <input type="text" id="price"><br>
 
-    <button onclick="f()">OK</button>
+    <button onclick="add()">Dodaj</button>
 
-    <div id="d"></div>
+    <div id="output">XD</div>
 
 </body>
 
 <script>
+    const output = document.getElementById("output")
 
-    function f(){
+    var pizzas = []
+    var highest = Number.NEGATIVE_INFINITY
 
-        const diameter = parseInt(document.getElementById("di").value)
-        const price = parseInt(document.getElementById("pr").value)
-        const div = document.getElementById("d")
+    function add(){ 
+        const value = Math.round(Math.PI*parseDouble(document.getElementById("diameter").value/2)^2/parseDouble(document.getElementById("price").value))
 
-        var area = Math.PI*diameter^2
+        pizzas.push(value)
 
-        var result = area/price
+        console.log(pizzas)
 
-        div.innerHTML=Math.round(result)
+        if (value > highest) {
+            highest = value
+        }
 
+        output.innerHTML = ""
+ 
+        pizzas.forEach(function(element, index, array) {
+            output.innerHTML += "<pizza>"+(index+1)+". "+(element/highest*100)+"% opłacalności<br></pizza>"
+        })
     }
 
 
