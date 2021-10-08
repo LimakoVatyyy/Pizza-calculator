@@ -14,7 +14,6 @@
 </head>
 
 <body>
-
     <p>Podaj rozmiar pizzy w cm</p><br>
     <input type="text" id="diameter"><br>
 
@@ -23,7 +22,7 @@
 
     <button onclick="add()">Dodaj</button>
 
-    <div id="output">XD</div>
+    <div id="output"></div>
 
 </body>
 
@@ -34,23 +33,22 @@
     var highest = Number.NEGATIVE_INFINITY
 
     function add(){ 
-        const value = Math.round(Math.PI*parseDouble(document.getElementById("diameter").value/2)^2/parseDouble(document.getElementById("price").value))
+        const value = (Math.PI*parseFloat(document.getElementById("diameter").value/2)^2)/parseFloat(document.getElementById("price").value)
 
         pizzas.push(value)
-
-        console.log(pizzas)
 
         if (value > highest) {
             highest = value
         }
 
         output.innerHTML = ""
+
+        //TODO przy zmienieniu cenu sie nie zmienia nic
  
         pizzas.forEach(function(element, index, array) {
-            output.innerHTML += "<pizza>"+(index+1)+". "+(element/highest*100)+"% opłacalności<br></pizza>"
+            output.innerHTML += "<pizza>"+(index+1)+". "+Math.round(element/highest*100)+"% opłacalności<br></pizza>"
         })
     }
-
 
 </script> 
 
