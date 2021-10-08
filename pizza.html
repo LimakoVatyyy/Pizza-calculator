@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <p>Podaj rozmiar pizzy w cm</p><br>
+    <input type="text" id="di"><br>
+
+    <p>Podaj cenę pizzy w zł</p><br>
+    <input type="text" id="pr"><br>
+
+    <button onclick="f()">OK</button>
+
+    <div id="d"></div>
+
+</body>
+
+<script>
+
+    function f(){
+
+        const diameter = parseInt(document.getElementById("di").value)
+        const price = parseInt(document.getElementById("pr").value)
+        const div = document.getElementById("d")
+
+        var area = Math.PI*diameter^2
+
+        var result = area/price
+
+        div.innerHTML=Math.round(result)
+
+    }
+
+
+</script> 
+
+</html>
